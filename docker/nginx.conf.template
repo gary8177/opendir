@@ -1,0 +1,51 @@
+# =============================================================================
+#  OpenDir —— Docker 版站点配置（容器启动时由 envsubst 从环境变量渲染）
+#  只有 ${OPENDIR_xxx} 形式的占位符会被替换；nginx 自带的 $uri / $arg_xxx 原样保留。
+# =============================================================================
+
+server {
+    listen      ${OPENDIR_LISTEN};
+    server_name ${OPENDIR_SERVER_NAME};
+
+    root  ${OPENDIR_ROOT};
+    charset utf-8;
+
+    # 目录 JSON 可能很大，开 gzip
+    gzip            on;
+    gzip_min_length 1024;
+    gzip_comp_level 5;
+    gzip_vary       on;
+    gzip_types      application/json text/css application/javascript image/svg+xml text/plain;
+
+    autoindex off;
+    index __opendir_none__;      # 故意不存在：目录请求必然落到 403 → 外壳渲染
+
+    # 1) 页面外壳（单文件，CSS/JS 已内联）+ 启动时生成的 config.js
+    location ${OPENDIR_THEME_URL}/ {
+        alias ${OPENDIR_THEME_PATH}/;
+        add_header Cache-Control "no-store";
+    }
+
+    # 2) 目录请求：没有索引文件 → 403 → 换成外壳；带 ?raw=1 → 重写到数据面
+    location / {
+        error_page 403 =200 ${OPENDIR_THEME_URL}/index.html;
+
+        if ($arg_${OPENDIR_JSON_ARG}) {
+            rewrite ^ ${OPENDIR_JSON_PREFIX}$uri last;
+        }
+    }
+
+    # 3) 数据面：alias 到挂载的文件目录，只输出 JSON，只放行目录
+    location ${OPENDIR_JSON_PREFIX}/ {
+        alias ${OPENDIR_ROOT}/;
+        autoindex on;
+        autoindex_format json;
+        autoindex_exact_size off;
+        autoindex_localtime off;
+        add_header Cache-Control "no-store";
+
+        if ($uri !~ /$) {
+            return 404;
+        }
+    }
+}

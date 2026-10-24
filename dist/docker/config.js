@@ -1,0 +1,1 @@
+window.OPENDIR_CONFIG = {"version":"1.0.0","refreshMs":120000,"jsonArg":"raw","apiBase":"","showHidden":true,"brand":"OpenDir","rootLabel":"根目录"};

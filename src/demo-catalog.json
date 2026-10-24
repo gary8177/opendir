@@ -1,0 +1,28 @@
+{
+  "/": [
+    { "name": "电影", "type": "directory", "mtime": "Fri, 23 Oct 2026 13:12:04 GMT" },
+    { "name": "软件", "type": "directory", "mtime": "Thu, 22 Oct 2026 02:03:51 GMT" },
+    { "name": "照片墙 2026", "type": "directory", "mtime": "Wed, 21 Oct 2026 11:40:00 GMT" },
+    { "name": "一个特别特别长的文件名用来测试省略号效果-2026-10-24-final-v3.tar.zst", "type": "file", "mtime": "Sat, 24 Oct 2026 01:20:00 GMT", "size": 4831838208 },
+    { "name": "ubuntu-24.04.1-desktop-amd64.iso", "type": "file", "mtime": "Sun, 12 Oct 2026 07:31:12 GMT", "size": 6291456000 },
+    { "name": "说明.md", "type": "file", "mtime": "Sat, 24 Oct 2026 09:02:33 GMT", "size": 3120 },
+    { "name": "notes.txt", "type": "file", "mtime": "Tue, 30 Sep 2026 15:45:00 GMT", "size": 812 },
+    { "name": "cover.avif", "type": "file", "mtime": "Mon, 06 Oct 2026 04:22:10 GMT", "size": 184320 },
+    { "name": "podcast-ep12.m4a", "type": "file", "mtime": "Fri, 16 Oct 2026 12:00:00 GMT", "size": 41943040 }
+  ],
+  "/电影/": [
+    { "name": "某部电影.2026.2160p.mkv", "type": "file", "mtime": "Fri, 23 Oct 2026 13:10:00 GMT", "size": 17179869184 },
+    { "name": "某部电影.2026.2160p.zh.srt", "type": "file", "mtime": "Fri, 23 Oct 2026 13:11:00 GMT", "size": 94208 }
+  ],
+  "/软件/": [
+    { "name": "portable", "type": "directory", "mtime": "Thu, 22 Oct 2026 02:03:51 GMT" },
+    { "name": "setup-x64.msi", "type": "file", "mtime": "Thu, 22 Oct 2026 02:01:00 GMT", "size": 96468992 }
+  ],
+  "/软件/portable/": [
+    { "name": "tool.exe", "type": "file", "mtime": "Thu, 22 Oct 2026 01:58:00 GMT", "size": 24117248 }
+  ],
+  "/照片墙 2026/": [
+    { "name": "IMG_0001.jpg", "type": "file", "mtime": "Wed, 21 Oct 2026 11:40:00 GMT", "size": 4194304 },
+    { "name": "IMG_0002.jpg", "type": "file", "mtime": "Wed, 21 Oct 2026 11:41:00 GMT", "size": 5242880 }
+  ]
+}

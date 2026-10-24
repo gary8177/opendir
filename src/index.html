@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>文件列表</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%232f6fed%22%20d%3D%22M3%206h6l2%202.5h10V19H3z%22%2F%3E%3C%2Fsvg%3E">
+<style>/*{{STYLE}}*/</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" id="brand" href="/"><span class="brand-mark" aria-hidden="true">&#9639;</span><span id="brand-name">文件站</span></a>
+    <input id="filter" class="filter" type="search" placeholder="筛选文件名（按 / 聚焦）" autocomplete="off" spellcheck="false" aria-label="筛选文件名">
+    <div class="actions">
+      <button id="refresh" class="icon-btn" type="button" title="立即刷新" aria-label="立即刷新">&#8635;</button>
+      <button id="theme" class="icon-btn" type="button" title="深浅色（跟随系统 / 浅 / 深）" aria-label="切换深浅色">&#9681;</button>
+      <div class="settings-wrap" id="settings-wrap">
+        <button id="settings" class="icon-btn" type="button" title="设置" aria-label="设置" aria-expanded="false">&#9881;</button>
+        <div class="panel" id="settings-panel" hidden>
+          <div class="panel-title">页面设置<span id="panel-version" class="panel-version"></span></div>
+          <label class="panel-row">
+            <span>自动刷新</span>
+            <select id="pref-refresh">
+              <option value="5000">5 秒</option>
+              <option value="30000">30 秒</option>
+              <option value="60000">1 分钟</option>
+              <option value="120000">2 分钟（默认）</option>
+              <option value="300000">5 分钟</option>
+              <option value="0">关闭</option>
+            </select>
+          </label>
+          <label class="panel-row">
+            <span>显示隐藏文件</span>
+            <input id="pref-hidden" type="checkbox">
+          </label>
+          <div class="panel-foot">
+            <button id="pref-reset" class="link-btn" type="button">恢复默认</button>
+            <span class="panel-hint">偏好只存在这台浏览器里</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav id="breadcrumb" class="breadcrumb" aria-label="路径"></nav>
+</header>
+
+<main class="wrap">
+  <table class="listing">
+    <thead>
+      <tr>
+        <th scope="col" class="col-name"><button type="button" data-sort="name">名称<span class="arrow" aria-hidden="true"></span></button></th>
+        <th scope="col" class="col-size"><button type="button" data-sort="size">大小<span class="arrow" aria-hidden="true"></span></button></th>
+        <th scope="col" class="col-date"><button type="button" data-sort="mtime">修改时间<span class="arrow" aria-hidden="true"></span></button></th>
+      </tr>
+    </thead>
+    <tbody id="list"></tbody>
+  </table>
+  <p id="status" class="status" role="status"></p>
+</main>
+
+<footer class="foot">
+  <span id="meta"></span>
+  <span id="updated"></span>
+</footer>
+
+<noscript><p class="wrap">浏览目录需要 JavaScript 才能渲染；文件直链依然可以直接下载。</p></noscript>
+
+<script>/*{{CONFIG}}*/</script>
+<script>/*{{DEMO}}*/</script>
+<script>/*{{SCRIPT}}*/</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# 用法：
+#   1) 首次：.\init-docker.cmd   （交互式生成 .env）
+#   2) 起来：docker compose up -d --build      打开 http://127.0.0.1:8080/
+#   .env 里的键会覆盖下面的默认值（compose 自动读取同目录 .env）
+services:
+  opendir:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${OPENDIR_IMAGE:-opendir:1.0.0}
+    container_name: ${OPENDIR_CONTAINER:-opendir}
+    restart: unless-stopped
+    ports:
+      - "${OPENDIR_PORT_HOST:-8080}:${OPENDIR_LISTEN:-80}"
+    environment:
+      OPENDIR_ROOT: ${OPENDIR_ROOT:-/srv/files}
+      OPENDIR_LISTEN: "${OPENDIR_LISTEN:-80}"
+      OPENDIR_SERVER_NAME: "${OPENDIR_SERVER_NAME:-_}"
+      OPENDIR_THEME_URL: "${OPENDIR_THEME_URL:-/_opendir}"
+      OPENDIR_JSON_PREFIX: "${OPENDIR_JSON_PREFIX:-/_raw}"
+      OPENDIR_JSON_ARG: "${OPENDIR_JSON_ARG:-raw}"
+      OPENDIR_REFRESH_MS: "${OPENDIR_REFRESH_MS:-120000}"
+      OPENDIR_BRAND: "${OPENDIR_BRAND:-OpenDir}"
+      OPENDIR_ROOT_LABEL: "${OPENDIR_ROOT_LABEL:-根目录}"
+      OPENDIR_SHOW_HIDDEN: "${OPENDIR_SHOW_HIDDEN:-true}"
+      OPENDIR_API_BASE: "${OPENDIR_API_BASE:-}"
+    volumes:
+      # 宿主机目录 : 容器内目录（两者由 .env 控制，缺省 ./files → /srv/files）
+      - "${OPENDIR_HOST_DIR:-./files}:${OPENDIR_ROOT:-/srv/files}:ro"

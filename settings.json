@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "server": {
+    "listen": "80",
+    "serverName": "pan.example.com",
+    "root": "/srv/files",
+    "themePath": "/var/www/opendir",
+    "themeUrl": "/_opendir",
+    "jsonPrefix": "/_raw",
+    "jsonArg": "raw"
+  },
+  "ui": {
+    "refreshMs": 120000,
+    "showHidden": true,
+    "brand": "OpenDir",
+    "rootLabel": "根目录",
+    "apiBase": ""
+  },
+  "build": {
+    "emitNginxConf": true,
+    "emitPreview": true,
+    "emitDocker": true
+  }
+}

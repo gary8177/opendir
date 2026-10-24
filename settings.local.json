@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "server": {
+    "listen": "4080",
+    "serverName": "pan.example.com",
+    "root": "D:/Downloads",
+    "themePath": "D:/Documents/deepseek-harness/default-workspace/opendir/dist",
+    "themeUrl": "/_opendir",
+    "jsonPrefix": "/_raw",
+    "jsonArg": "raw"
+  },
+  "ui": {
+    "refreshMs": 120000,
+    "showHidden": true,
+    "brand": "你好！",
+    "rootLabel": "根目录",
+    "apiBase": ""
+  },
+  "build": {
+    "emitNginxConf": true,
+    "emitPreview": true
+  }
+}
